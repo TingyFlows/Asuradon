@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* ASURADON - Google Fonts */
+
+/* Default website font */
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+/* Main headings */
+h1, h2, h3 {
+  font-family: 'Cinzel', serif;
+}
+
+/* Buttons */
+button {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+/* Optional decorative font class */
+.wuxia-text {
+  font-family: 'Cormorant Garamond', serif;
+}

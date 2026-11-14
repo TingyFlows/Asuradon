@@ -32,8 +32,11 @@
 }
 
 .site-header h2 {
-    color: #d4b477;
-    letter-spacing: 4px;
+color: #d4b477;
+letter-spacing: 5px;
+font-family: 'Cinzel', serif;
+font-weight: 600;
+
 }
 
 .site-header span{
@@ -66,6 +69,9 @@
 .age-box h1 {
     font-size: 28px;
     color: #d4b477;
+    font-family: 'Cinzel', serif;
+font-weight: 700;
+letter-spacing: 2px;
 }
 
 .age-box h3 {
