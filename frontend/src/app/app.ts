@@ -1,12 +1,25 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
+  standalone: true,
   templateUrl: './app.html',
+  styleUrls: ['./app.css'],
 })
+
 export class App {
-  protected readonly title = signal('frontend');
+ screen: 'gate' | 'home' | 'blocked' = 'gate';
+
+ enterWebsite() {
+   this.screen = 'home';
+ }
+
+ denyAccess() {
+   this.screen = 'blocked';
+ }  
+
+ returnToGate() {
+   this.screen = 'gate';
+ }  
 }

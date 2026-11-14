@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   imports: [],
   selector: 'app-mods',
-  styleUrl: './mods.css',
+  styleUrls: ['./mods.css'],
   templateUrl: './mods.html',
 })
 export class Mods {}

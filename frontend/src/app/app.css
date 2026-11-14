@@ -1,0 +1,124 @@
+:host {
+  display: block;
+ min-height: 100vh;     
+}   
+
+* {
+
+  box-sizing: border-box;
+}
+
+.page {
+    min-height: 100vh;
+    background-color: linear-gradient(
+        135deg,
+        #101820,
+        #243542,
+        #101820
+    );
+    color: #e8e1d5;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.site-header {
+    padding: 20px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #66563e;
+}
+
+.site-header h2 {
+    color: #d4b477;
+    letter-spacing: 4px;
+}
+
+.site-header span{
+    font-size: 12px;
+    color: #bcb6ac
+}
+
+.age-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.age-box {
+    width: 100%;
+    max-width: 500px;
+    padding: 40px 30px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 10px;
+}
+
+.symbol {
+    font-size: 28px;
+    color: #d4b477;
+}
+
+.age-box h1 {
+    font-size: 28px;
+    color: #d4b477;
+}
+
+.age-box h3 {
+    margin: 25px 0;
+    font-size: 18px;
+   
+}
+
+.description {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #c5c5c5;
+  
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.yes-btn {
+    background-color: #b89a65;
+    color: #111;
+    border: none;
+}
+
+.no-btn {
+    background-color: transparent;
+    color: #ddd;
+    border: 1px solid #999;
+}
+
+ button:hover {
+filter: brightness(1.2);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: #a7a7a7;
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        padding: 15px ;
+    }
+    .age-box {
+        padding: 30px 20px;
+    }
+}
