@@ -1,25 +1,31 @@
-import { Component, signal } from '@angular/core';
 
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.html',
-  styleUrls: ['./app.css'],
+  styleUrls: ['./app.css']
 })
 
 export class App {
- screen: 'gate' | 'home' | 'blocked' = 'gate';
 
- enterWebsite() {
-   this.screen = 'home';
- }
+  // The visitor begins at the age gate.
+  screen: 'gate' | 'home' | 'blocked' = 'gate';
 
- denyAccess() {
-   this.screen = 'blocked';
- }  
+  // YES button
+  enterWebsite() {
+    this.screen = 'home';
+  }
 
- returnToGate() {
-   this.screen = 'gate';
- }  
+  // NO button
+  denyAccess() {
+    this.screen = 'blocked';
+  }
+
+  // Return to the age gate for testing
+  returnToGate() {
+    this.screen = 'gate';
+  }
+
 }

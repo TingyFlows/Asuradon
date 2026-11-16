@@ -1,75 +1,115 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<div class="page">  
+<div class="landing-page">
+
+  <!-- ASURADON HEADER -->
   <header class="site-header">
-    <h2>ASURADON</h2>
- <span>CONAN EXILES • 18+</span>
+
+    <div class="brand">
+      ASURADON
+    </div>
+
+    <div class="server-info">
+      CONAN EXILES • 18+
+    </div>
+
   </header>
 
-  @if (screen === 'gate') {
-<main class="age-container">
-  <div class="age-box">
 
-<div class="symbol">✦</div>
+  <!-- CENTER CONTENT -->
+  <main class="main-content">
 
-<h1>AGE VERIFICATION  </h1>
+    <!-- AGE VERIFICATION -->
+    @if (screen === 'gate') {
 
-<p> Welcome to Asuradon</p>
+      <section class="age-card">
 
-<p class="description">
-  This community contains Adult themes
-  and is intended for ages 18 and older.
-</p>
+        <div class="symbol">✦</div>
 
-<h3>Are you 18 years of age or older?</h3>
+        <h1>AGE VERIFICATION</h1>
 
-<button class="yes-btn"
-(click)="enterWebsite()">
-YES - I AM 18 OR OLDER
-</button>
-<button class="no-btn"
-(click)="denyAccess()">
-NO - I AM UNDER 18
-</button>"
+        <p class="welcome">
+          Welcome to Asuradon
+        </p>
 
-  </div>
-</main>
+        <p class="description">
+          Enter a realm of Dark Wuxia fantasy,
+          adventure, and mature roleplay.
+          This community is intended
+          for adults aged 18 and older.
+        </p>
 
-  }
+        <h2>
+          Are you 18 years of age or older?
+        </h2>
 
-  @if (screen === 'home') {
-    <main class="age-container">
-      <div class="age-box">✦
-      <h1>Welcome to Asuradon</h1>
-      <p>Asuradon community is coming soon.</p>
+        <button
+          type="button"
+          class="yes-btn"
+          (click)="enterWebsite()">
+          YES — I AM 18 OR OLDER
+        </button>
 
-      <button class="yes-btn"(click)="returnToGate()">
-      BACK TO AGE VERIFICATION
-      </button>
+        <button
+          type="button"
+          class="no-btn"
+          (click)="denyAccess()">
+          NO — I AM UNDER 18
+        </button>
 
-      </div>
-    </main>
-  }
+      </section>
+    }
 
-  @if (screen === 'blocked') {
-    <main class="age-container">
-      <div class="age-box">
-        <h1>ACCESS DENIED</h1>
-        <p>You must be 18 or older to enter Asuradon.</p>
-      </div>
-    </main>
-  }
 
-  <footer>
-        © 2026 ASURADON • ADULT COMMUNITY 18+
+    <!-- TEMPORARY HOMEPAGE -->
+    @if (screen === 'home') {
 
+      <section class="age-card">
+
+        <div class="symbol">✦</div>
+
+        <h1>WELCOME TO ASURADON</h1>
+
+        <p class="description">
+          A Dark Wuxia Fantasy
+          Roleplay Community.
+        </p>
+
+        <p class="description">
+          The realm awaits you.
+        </p>
+
+        <button
+          type="button"
+          class="yes-btn"
+          (click)="returnToGate()">
+          RETURN TO PREVIEW
+        </button>
+
+      </section>
+    }
+
+
+    <!-- UNDERAGE VISITORS -->
+    @if (screen === 'blocked') {
+
+      <section class="age-card">
+
+        <h1>ACCESS RESTRICTED</h1>
+
+        <p class="description">
+          You must be 18 or older
+          to enter Asuradon.
+        </p>
+
+      </section>
+    }
+
+  </main>
+
+
+  <!-- COPYRIGHT FOOTER -->
+  <footer class="site-footer">
+    © 2026 ASURADON • ADULT COMMUNITY 18+
   </footer>
 
 </div>
