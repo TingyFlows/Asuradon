@@ -1,0 +1,72 @@
+
+name: Deploy ASURADON Website
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install Angular dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Build ASURADON
+        working-directory: frontend
+        run: npm run build -- --base-href "/${{ github.event.repository.name }}/"
+
+      - name: Prepare website files
+        shell: bash
+        run: |
+          mkdir -p public-site
+
+          if [ -f frontend/dist/frontend/browser/index.html ]; then
+            BUILD_DIR="frontend/dist/frontend/browser"
+          else
+            INDEX_FILE=$(find frontend/dist -type f -name index.html | head -n 1)
+            test -n "$INDEX_FILE"
+            BUILD_DIR=$(dirname "$INDEX_FILE")
+          fi
+
+          cp -a "$BUILD_DIR/." public-site/
+          cp public-site/index.html public-site/404.html
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: public-site
+
+      - name: Publish website
+        id: deployment
+        uses: actions/deploy-pages@v4
