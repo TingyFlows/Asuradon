@@ -1,1 +1,76 @@
-<p>home works!</p>
+
+<main class="asuradon-home">
+
+  <!-- Original Dark Wuxia Manor wallpaper -->
+  <section class="hero">
+
+    <img
+      class="hero-image"
+      src="/images/asuradon-manor-home.webp"
+      alt="ASURADON Dark Wuxia Manor"
+    />
+
+    <!-- Main navigation over the wallpaper -->
+    <nav class="desktop-links" aria-label="Main menu">
+
+      <a class="hotspot home-link"
+         routerLink="/home"
+         aria-label="Home"></a>
+
+      <a class="hotspot about-link"
+         routerLink="/about"
+         aria-label="About"></a>
+
+      <a class="hotspot world-link"
+         routerLink="/world"
+         aria-label="World"></a>
+
+      <a class="hotspot roleplay-link"
+         routerLink="/roleplay"
+         aria-label="Roleplay"></a>
+
+      <a class="hotspot community-link"
+         routerLink="/community"
+         aria-label="Community"></a>
+
+      <a class="hotspot gallery-link"
+         routerLink="/gallery"
+         aria-label="Gallery"></a>
+
+    </nav>
+
+    <!-- Discord button -->
+    @if (discordInvite) {
+      <a
+        class="hotspot discord-link"
+        [href]="discordInvite"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Join ASURADON Discord">
+      </a>
+    }
+
+  </section>
+
+  <!-- Navigation for mobile -->
+  <nav class="mobile-links" aria-label="Mobile menu">
+
+    <a routerLink="/home">Home</a>
+    <a routerLink="/about">About</a>
+    <a routerLink="/world">World</a>
+    <a routerLink="/roleplay">Roleplay</a>
+    <a routerLink="/community">Community</a>
+    <a routerLink="/gallery">Gallery</a>
+
+    @if (discordInvite) {
+      <a
+        [href]="discordInvite"
+        target="_blank"
+        rel="noopener noreferrer">
+        Join Discord
+      </a>
+    }
+
+  </nav>
+
+</main>

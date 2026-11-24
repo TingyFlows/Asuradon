@@ -1,115 +1,102 @@
 
-<div class="landing-page">
+@if (screen === 'home') {
 
-  <!-- ASURADON HEADER -->
-  <header class="site-header">
+  <!-- Navigation for all secondary pages -->
+  @if (router.url !== '/home') {
+    <nav class="site-page-nav" aria-label="Website navigation">
+      <a routerLink="/home">ASURADON</a>
+      <a routerLink="/about">About</a>
+      <a routerLink="/world">World</a>
+      <a routerLink="/roleplay">Roleplay</a>
+      <a routerLink="/community">Community</a>
+      <a routerLink="/gallery">Gallery</a>
+    </nav>
+  }
 
-    <div class="brand">
-      ASURADON
-    </div>
+  <!-- Angular loads the selected page here -->
+  <router-outlet></router-outlet>
 
-    <div class="server-info">
-      CONAN EXILES • 18+
-    </div>
+} @else {
 
-  </header>
+  <div class="landing-page">
 
+    <!-- ASURADON HEADER -->
+    <header class="site-header">
+      <div class="brand">
+        ASURADON
+      </div>
 
-  <!-- CENTER CONTENT -->
-  <main class="main-content">
+      <div class="server-info">
+        CONAN EXILES • 18+
+      </div>
+    </header>
 
-    <!-- AGE VERIFICATION -->
-    @if (screen === 'gate') {
+    <!-- CENTER CONTENT -->
+    <main class="main-content">
 
-      <section class="age-card">
+      <!-- AGE VERIFICATION -->
+      @if (screen === 'gate') {
 
-        <div class="symbol">✦</div>
+        <section class="age-card">
 
-        <h1>AGE VERIFICATION</h1>
+          <div class="symbol">✦</div>
 
-        <p class="welcome">
-          Welcome to Asuradon
-        </p>
+          <h1>AGE VERIFICATION</h1>
 
-        <p class="description">
-          Enter a realm of Dark Wuxia fantasy,
-          adventure, and mature roleplay.
-          This community is intended
-          for adults aged 18 and older.
-        </p>
+          <p class="welcome">
+            Welcome to Asuradon
+          </p>
 
-        <h2>
-          Are you 18 years of age or older?
-        </h2>
+          <p class="description">
+            Enter a realm of Dark Wuxia fantasy,
+            adventure, and mature roleplay.
+            This community is intended
+            for adults aged 18 and older.
+          </p>
 
-        <button
-          type="button"
-          class="yes-btn"
-          (click)="enterWebsite()">
-          YES — I AM 18 OR OLDER
-        </button>
+          <h2>
+            Are you 18 years of age or older?
+          </h2>
 
-        <button
-          type="button"
-          class="no-btn"
-          (click)="denyAccess()">
-          NO — I AM UNDER 18
-        </button>
+          <button
+            type="button"
+            class="yes-btn"
+            (click)="enterWebsite()">
+            YES — I AM 18 OR OLDER
+          </button>
 
-      </section>
-    }
+          <button
+            type="button"
+            class="no-btn"
+            (click)="denyAccess()">
+            NO — I AM UNDER 18
+          </button>
 
+        </section>
+      }
 
-    <!-- TEMPORARY HOMEPAGE -->
-    @if (screen === 'home') {
+      <!-- UNDERAGE VISITORS -->
+      @if (screen === 'blocked') {
 
-      <section class="age-card">
+        <section class="age-card">
 
-        <div class="symbol">✦</div>
+          <h1>ACCESS RESTRICTED</h1>
 
-        <h1>WELCOME TO ASURADON</h1>
+          <p class="description">
+            You must be 18 or older
+            to enter Asuradon.
+          </p>
 
-        <p class="description">
-          A Dark Wuxia Fantasy
-          Roleplay Community.
-        </p>
+        </section>
+      }
 
-        <p class="description">
-          The realm awaits you.
-        </p>
+    </main>
 
-        <button
-          type="button"
-          class="yes-btn"
-          (click)="returnToGate()">
-          RETURN TO PREVIEW
-        </button>
+    <!-- COPYRIGHT FOOTER -->
+    <footer class="site-footer">
+      © 2026 ASURADON • ADULT COMMUNITY 18+
+    </footer>
 
-      </section>
-    }
+  </div>
 
-
-    <!-- UNDERAGE VISITORS -->
-    @if (screen === 'blocked') {
-
-      <section class="age-card">
-
-        <h1>ACCESS RESTRICTED</h1>
-
-        <p class="description">
-          You must be 18 or older
-          to enter Asuradon.
-        </p>
-
-      </section>
-    }
-
-  </main>
-
-
-  <!-- COPYRIGHT FOOTER -->
-  <footer class="site-footer">
-    © 2026 ASURADON • ADULT COMMUNITY 18+
-  </footer>
-
-</div>
+}

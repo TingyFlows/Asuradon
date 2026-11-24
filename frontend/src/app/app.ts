@@ -1,8 +1,11 @@
 
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
+  imports: [RouterOutlet, RouterLink],
   standalone: true,
   templateUrl: './app.html',
   styleUrls: ['./app.css']
@@ -10,6 +13,9 @@ import { Component } from '@angular/core';
 
 export class App {
 
+  readonly router = inject(Router);
+
+  
   // The visitor begins at the age gate.
   screen: 'gate' | 'home' | 'blocked' = 'gate';
 

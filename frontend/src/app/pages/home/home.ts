@@ -1,9 +1,14 @@
+
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
   selector: 'app-home',
-  styleUrls: ['./home.css'],
+  imports: [RouterLink],
   templateUrl: './home.html',
+  styleUrl: './home.css'
 })
-export class Home {}
+export class Home {
+  // Keep your existing Discord invitation URL here.
+  discordInvite = 'https://discord.gg/mXWc2ebrTN';
+}
