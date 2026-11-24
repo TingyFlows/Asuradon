@@ -14,15 +14,13 @@ permissions:
 
 concurrency:
   group: github-pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # JOB 1: Build and upload Angular
+  build:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Download repository
@@ -35,28 +33,30 @@ jobs:
           cache: npm
           cache-dependency-path: frontend/package-lock.json
 
-      - name: Install Angular dependencies
+      - name: Install dependencies
         working-directory: frontend
         run: npm ci
 
       - name: Build ASURADON
         working-directory: frontend
-        run: npm run build -- --base-href "/${{ github.event.repository.name }}/"
+        run: npm run build -- --base-href "/Asuradon/"
 
       - name: Prepare website files
         shell: bash
         run: |
           mkdir -p public-site
 
-          if [ -f frontend/dist/frontend/browser/index.html ]; then
-            BUILD_DIR="frontend/dist/frontend/browser"
-          else
-            INDEX_FILE=$(find frontend/dist -type f -name index.html | head -n 1)
-            test -n "$INDEX_FILE"
-            BUILD_DIR=$(dirname "$INDEX_FILE")
-          fi
+          INDEX_FILE=$(find frontend/dist -type f -name index.html | head -n 1)
+          test -n "$INDEX_FILE"
 
+          BUILD_DIR=$(dirname "$INDEX_FILE")
           cp -a "$BUILD_DIR/." public-site/
+
+          # Verify the main website and wallpaper exist
+          test -f public-site/index.html
+          test -f public-site/images/asuradon-manor-home.webp
+
+          # Support Angular page URLs on refresh
           cp public-site/index.html public-site/404.html
 
       - name: Configure GitHub Pages
@@ -67,6 +67,16 @@ jobs:
         with:
           path: public-site
 
+  # JOB 2: Publish after build finishes
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
       - name: Publish website
         id: deployment
         uses: actions/deploy-pages@v4
