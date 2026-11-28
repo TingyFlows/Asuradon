@@ -76,20 +76,26 @@
   margin: auto;
 }
 
+
 .gallery-card {
-  min-width: 0;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+  break-inside: avoid;
   overflow: hidden;
   background: #241c26;
   border: 1px solid #795d46;
   border-radius: 8px;
 }
 
+
+
 .gallery-card img {
   display: block;
   width: 100%;
-  height: 240px;
-  object-fit: cover;
+  height: auto;
 }
+
 
 .image-placeholder {
   height: 240px;
@@ -128,11 +134,12 @@
   color: #aa9075;
 }
 
+
 /* Tablet screens */
 
 @media (max-width: 900px) {
   .gallery-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    columns: 2;
   }
 }
 
@@ -144,6 +151,6 @@
   }
 
   .gallery-grid {
-    grid-template-columns: 1fr;
+    columns: 1;
   }
 }

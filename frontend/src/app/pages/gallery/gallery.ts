@@ -20,6 +20,7 @@ export class Gallery {
 
   selectedCategory = 'All';
 
+ 
   screenshots = [
     {
       title: 'Dark Wuxia Manor',
@@ -29,12 +30,17 @@ export class Gallery {
     {
       title: 'Character Portraits',
       category: 'Characters',
-      image: ''
+      image: 'images/gallery/character-01.png'
     },
     {
       title: 'Player Settlements',
       category: 'Buildings',
-      image: ''
+      image: 'images/gallery/building-01.png'
+    },
+    {
+      title: 'World and Scenery',
+      category: 'Scenery',
+      image: 'images/gallery/scenery-01.png'
     },
     {
       title: 'Roleplay Stories',
@@ -47,6 +53,7 @@ export class Gallery {
       image: ''
     }
   ];
+
 
   selectCategory(category: string) {
     this.selectedCategory = category;
