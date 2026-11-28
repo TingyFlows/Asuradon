@@ -1,12 +1,92 @@
 
-<section class="asuradon-subpage">
-  <h1>Asuradon Gallery</h1>
+<section class="gallery-page">
 
-  <p>
-    Explore character portraits,
-    fantasy screenshots, settlement
-    builds, and community creations.
-  </p>
+  <!-- Gallery introduction -->
+  <header class="gallery-header">
 
-  <p>Gallery collections coming soon.</p>
+    <p class="gallery-label">
+      ASURADON COMMUNITY GALLERY
+    </p>
+
+    <h1>Through the Eyes of Exiles</h1>
+
+    <p>
+      Capture your journey. Share your story.
+    </p>
+
+    <p class="gallery-description">
+      Explore the characters, scenery, buildings
+      and adventures shared by our community.
+    </p>
+
+  </header>
+
+  <!-- Gallery category buttons -->
+  <nav class="gallery-filters"
+       aria-label="Gallery categories">
+
+    @for (category of categories; track category) {
+
+      <button
+        type="button"
+        [class.active]="selectedCategory === category"
+        [attr.aria-pressed]="selectedCategory === category"
+        (click)="selectCategory(category)">
+
+        {{ category }}
+
+      </button>
+
+    }
+
+  </nav>
+
+  <!-- Screenshot cards -->
+  <div class="gallery-grid">
+
+    @for (
+      screenshot of filteredScreenshots;
+      track screenshot.title
+    ) {
+
+      <article class="gallery-card">
+
+        @if (screenshot.image) {
+
+          <img
+            [src]="screenshot.image"
+            [alt]="screenshot.title"
+            loading="lazy">
+
+        } @else {
+
+          <div class="image-placeholder">
+            <span>✦</span>
+            Screenshot Coming Soon
+          </div>
+
+        }
+
+        <div class="gallery-card-info">
+
+          <span>{{ screenshot.category }}</span>
+
+          <h2>{{ screenshot.title }}</h2>
+
+        </div>
+
+      </article>
+
+    } @empty {
+
+      <p>No screenshots found in this category.</p>
+
+    }
+
+  </div>
+
+  <footer class="gallery-footer">
+    ASURADON • Community Gallery • 18+
+  </footer>
+
 </section>
